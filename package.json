@@ -1,0 +1,34 @@
+{
+  "name": "vault",
+  "version": "1.0.0",
+  "description": "Vault for USDs",
+  "main": "index.js",
+  "scripts": {
+    "install-pip-packages": "pip3 install -r requirements.txt",
+    "initialize-pre-commit": "pre-commit install -c ./dev-utils/.pre-commit-config.yaml",
+    "prepare": "npm-run-all install-pip-packages initialize-pre-commit",
+    "solhint": "./node_modules/.bin/solhint -f table -c ./dev-utils/.solhint.json",
+    "prettier:solidity": "./node_modules/.bin/prettier --write **/*.sol"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.5.1",
+    "prettier-plugin-solidity": "^1.0.0-beta.19",
+    "solhint": "^3.3.6",
+    "solhint-plugin-prettier": "^0.0.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sperax/Hackathon-Vault.git"
+  },
+  "keywords": [
+    "Vault",
+    "USDs"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sperax/Hackathon-Vault/issues"
+  },
+  "homepage": "https://github.com/Sperax/Hackathon-Vault#readme"
+}
