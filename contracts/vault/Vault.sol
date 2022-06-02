@@ -1,10 +1,3 @@
-// Current version: 9
-// This contract's version: 10
-// Changes: 1. temporarily modified rebase() to directly rebase out USDs token
-//			   held by VaultCore. (normally it first swaps reward & interest
-//			   earned in strategies to USDs, then rebases out these USDs)
-// Arbitrum-one proxy address: 0xF783DD830A4650D2A8594423F123250652340E3f
-
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.6.12;
 import "@openzeppelin/contracts-upgradeable/access/AccessControlUpgradeable.sol";
@@ -16,9 +9,7 @@ import "../../interfaces/IStrategy.sol";
 
 
 /**
- * @title Vault of USDs protocol
- * @dev Control Mint, Redeem, Allocate and Rebase of USDs
- * @dev Live on Arbitrum Layer 2
+ * @title minimized Vault of USDs protocol
  * @author Sperax Foundation
  */
 contract Vault is Initializable, OwnableUpgradeable, ReentrancyGuardUpgradeable {
