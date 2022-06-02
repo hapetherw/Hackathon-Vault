@@ -26,10 +26,9 @@ interface IStrategy {
      * @param _recipient         Address to which the asset should be sent
      * @param _asset             Address of the asset
      */
-    function collectInterest(
-        address _recipient,
-        address _asset
-    ) external returns (address interestAsset, uint256 interetAmt);
+    function collectInterest(address _recipient, address _asset)
+        external
+        returns (address interestAsset, uint256 interetAmt);
 
     /**
      * @dev Collect reward tokens from the Strategy.
@@ -49,15 +48,15 @@ interface IStrategy {
         view
         returns (uint256 interestEarned);
 
-    function checkRewardEarned()
-        external
-        view
-        returns (uint256 rewardEarned);
+    function checkRewardEarned() external view returns (uint256 rewardEarned);
 
     /**
      * @dev Returns bool indicating whether strategy supports collateral.
      */
-    function supportsCollateral(address _collateral) external view returns (bool);
+    function supportsCollateral(address _collateral)
+        external
+        view
+        returns (bool);
 
     /**
      * @dev The address of the reward token for the Strategy.
