@@ -30,6 +30,11 @@ contract Vault is
         address indexed depositStrategyAddr,
         uint256 allocateAmount
     );
+    event CollateralWithdrawn(
+        address indexed collateralAddr,
+        address indexed depositStrategyAddr,
+        uint256 withdrawnAmount
+    );
     event TotalValueLocked(
         uint256 totalValueLocked,
         uint256 totalValueInVault,
@@ -175,6 +180,25 @@ contract Vault is
                 );
             }
         }
+    }
+
+    /**
+     * @dev withdraw collateral from strategies
+     */
+    function withdraw(
+        address collateralAddr,
+        uint256 amount
+    ) external onlyOwner nonReentrant {
+        collateralStruct memory collateral = collateralsInfo[collateralAddr];
+        require(collateral.added, "Collateral not added");
+        IStrategy strategy = IStrategy(collateral.defaultStrategyAddr);
+        require(strategy.supportsCollateral(collateral.collateralAddr));
+        strategy.withdraw(address(this), collateralAddr, amount);
+        emit CollateralWithdrawn(
+            collateralAddr,
+            collateral.defaultStrategyAddr,
+            amount
+        );
     }
 
     /**
