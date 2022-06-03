@@ -53,10 +53,11 @@ def main():
     txn = vault_proxy.initialize({'from': owner})
 
 
-    print("Adding mocktoken as collateral")
-    mockToken = MockToken.deploy("MockToken", "MOCK", 18, {'from': owner})
-    txn = vault_proxy.addCollateral(
-        mockToken,
-        '0x0000000000000000000000000000000000000000', # _defaultStrategyAddr
-        {'from': owner}
-    )
+    # print("Adding Mocktoken as collateral")
+    # mockToken = MockToken.deploy("MockToken", "MOCK", 18, {'from': owner})
+    # txn = vault_proxy.addCollateral(
+    #     mockToken,
+    #     '0x0000000000000000000000000000000000000000', # _defaultStrategyAddr
+    #     {'from': owner}
+    # )
+    # txn = MockToken.transfer(vault_proxy, MockToken.balanceOf(owner), {'from': owner})
